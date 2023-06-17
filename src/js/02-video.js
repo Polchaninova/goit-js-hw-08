@@ -1,3 +1,35 @@
+import Player from '@vimeo/player';
+import throttle from 'lodash.throttle';
+
+const iframe = document.querySelector('iframe');
+const TIME = "videoplayer-current-time";
+
+const player = new Player(iframe);
+
+const onPlay = function (data) {
+  localStorage.setItem(TIME, JSON.stringify(data))
+};
+
+const savePlayVideo = localStorage.getItem(TIME)
+const parsePlayVideo = JSON.parse(savePlayVideo)
+// console.log(parsePlayVideo);
+
+player.on('play', onPlay);
+player.on('pause', onPlay);
+
+player.on('timeupdate', throttle(onPlay, 500));
+
+
+if (parsePlayVideo?.seconds) {
+  player.setCurrentTime(parsePlayVideo.seconds)
+}
+// *
+// player.setMuted(true)
+// player.play()
+
+
+
+
 {/* <iframe
   id="vimeo-player"
   src="https://player.vimeo.com/video/236203659"
@@ -7,24 +39,16 @@
   allowfullscreen
   allow="autoplay; encrypted-media"
 ></iframe> */}
-// В HTML есть < iframe > с видео для Vimeo плеера.
-// Напиши скрипт который будет сохранять текущее время воспроизведения видео
-// в локальное хранилище и,
-// при перезагрузке страницы, продолжать воспроизводить видео с этого времени.
-import Player from '@vimeo/player';
 
-const iframe = document.querySelector('iframe');
-const player = new Vimeo.Player(iframe);
 
-player.on('play', function () {
-  console.log('played the video!');
-});
-const onPlay = function (data) {
-  // data is an object containing properties specific to that event
-};
 
-player.on('play', onPlay);
 
-player.getVideoTitle().then(function (title) {
-  console.log('title:', title);
-});
+
+
+
+
+
+
+// получить время воспроизвдения
+// сожранить теу время в локал
+// при перезагрузке воспроизводить с того же времени
