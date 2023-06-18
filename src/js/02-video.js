@@ -24,8 +24,8 @@ if (parsePlayVideo?.seconds) {
   player.setCurrentTime(parsePlayVideo.seconds)
 }
 // *
-// player.setMuted(true)
-// player.play()
+player.setMuted(true)
+player.play()
 
 
 

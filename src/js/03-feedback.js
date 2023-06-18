@@ -1,15 +1,4 @@
 
-{/* <form class="feedback-form" autocomplete="off">
-  <label>
-    Email
-    <input type="email" name="email" autofocus />
-  </label>
-  <label>
-    Message
-    <textarea name="message" rows="8"></textarea>
-  </label>
-  <button type="submit">Submit</button>
-</form> */}
 import throttle from 'lodash.throttle';
 
 const refs = {
@@ -71,3 +60,15 @@ function populateTextarea() {
     Object.assign(formData, parsedFormData)
   }
 }
+
+  {/* <form class="feedback-form" autocomplete="off">
+    <label>
+      Email
+      <input type="email" name="email" autofocus />
+    </label>
+    <label>
+      Message
+      <textarea name="message" rows="8"></textarea>
+    </label>
+    <button type="submit">Submit</button>
+  </form> */}
