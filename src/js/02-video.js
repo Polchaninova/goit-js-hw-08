@@ -7,7 +7,8 @@ const TIME = "videoplayer-current-time";
 const player = new Player(iframe);
 
 const onPlay = function (data) {
-  localStorage.setItem(TIME, JSON.stringify(data))
+  // console.log(data.seconds);
+  localStorage.setItem(TIME, JSON.stringify(data.seconds))
 };
 
 const savePlayVideo = localStorage.getItem(TIME)
