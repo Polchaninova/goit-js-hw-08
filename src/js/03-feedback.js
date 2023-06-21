@@ -22,7 +22,9 @@ function onFormSubmit(e) {
   e.preventDefault();
 
   e.currentTarget.reset()// reset form =>
-  console.log(localStorage.getItem(STORAGE_KEY));
+  // console.log(localStorage.getItem(STORAGE_KEY));
+  localStorage.getItem(STORAGE_KEY);
+
   // !if form submission => removeItem on key, so that - users not submit again
   localStorage.removeItem(STORAGE_KEY)// reset localStorage
   formData.email = ""
@@ -37,6 +39,7 @@ function onTextareaInput(e) {
 
   //            method      key    :     value
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData))
+
 }
 
 function populateTextarea() {
@@ -47,7 +50,6 @@ function populateTextarea() {
   let parsedFormData
   try {
     parsedFormData = JSON.parse(savedFormData);
-
   } catch (error) {
     console.log(error);
   }
@@ -55,9 +57,11 @@ function populateTextarea() {
   //      true
   if (parsedFormData) {
     // pass value to textarea
+
     refs.email.value = parsedFormData.email;
     refs.textarea.value = parsedFormData.message;
     Object.assign(formData, parsedFormData)
+    console.log(formData);
   }
 }
 
